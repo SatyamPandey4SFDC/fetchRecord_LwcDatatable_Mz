@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-scrollable_y" style="height:20rem">
+        <lightning-datatable
+            key-field="id"
+            data =  {dataTabeData}
+            columns = {columns}
+            onrowselection = {checkSelection}
+            onsave={handleSave}
+            draft-values={saveDraftValues} 
+            hide-row-number-column>
+        </lightning-datatable>
+    </div> 
+</template>

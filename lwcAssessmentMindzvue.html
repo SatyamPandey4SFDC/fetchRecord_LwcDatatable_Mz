@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="LWC_Assessment @Mindzvue" icon-name="standard:calculated_insights" >
+        <div class="slds-m-around_x-small" style="margin-top: -25px;">
+        <!--child comp-->
+        <template if:true={isLoading}>
+            <div class="slds-p-around_x-large">
+                <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={sendData}>
+            <div class="slds-p-around_x-large">
+                <c-child-assessment table-data={parenttoChild} ontabledata={handleChildEvent} onsavebufferdata={patchBufferData}></c-child-assessment>
+            </div>
+        </template>
+
+        <div class="slds-m-top_small slds-m-bottom_medium" style="margin-top: -5px;">
+            <lightning-button variant="brand" label="ADD DEBT" 
+                  onclick={handleAddDebt} class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button variant="brand" label="REMOVE DEBT" disabled={isTrue}  
+                  onclick={handleRemoveDebt} class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+        <div class="mycolor">
+            <div class="slds-grid slds-wrap slds-m-top_medium slds-m-bottom_small">
+                <div class="slds-p-horizontal--small slds-col slds-size_10-of-12 slds-m-bottom--medium slds-grid_align-center">
+                    <p style="margin-left: 50px; margin-top: 5px;"> <strong>Total  : </strong> </p>
+                </div>
+                <div class="slds-p-horizontal--small slds-col slds-size_2-of-12 slds-m-bottom_x-small">
+                    <p style="margin-top: 5px;"> <strong>$ {balanceTotal}</strong>  </p>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap slds-m-top_medium slds-m-bottom_small" style="margin-bottom: -10px;">
+            <div class="slds-p-horizontal--small slds-col slds-size_4-of-12 slds-m-bottom--medium">
+                <p> <strong>Total Row Count :  {totalRowCount}</strong> </p>
+            </div>
+            <div class="slds-p-horizontal--small slds-col slds-size_8-of-12 slds-m-bottom--medium">
+                <p> <strong>Check Row Count :  {checkRowCount}</strong>  </p>
+            </div>
+        </div>
+        </div>
+        <div slot="footer">
+            <p>Assignment By : <strong>@Satyam_Pandey </strong></p>
+        </div>
+        </lightning-card>
+</template>
